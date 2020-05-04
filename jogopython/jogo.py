@@ -1,7 +1,7 @@
 import pygame
 pygame.init ()
 
-janela =pygame.display.set_mode((800,600))
+janela = pygame.display.set_mode((800,600))
 pygame.display.set_caption("JOGO PYTHON")
 
 janela_aberta = True
