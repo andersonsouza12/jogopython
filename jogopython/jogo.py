@@ -13,3 +13,8 @@ while janela_aberta :
             janela_aberta = False
 
 pygame.quit()
+
+
+
+
+#Qualquer besteira kkkkkkk
