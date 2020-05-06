@@ -12,7 +12,7 @@ andar = 0
 fundo = pygame.image.load('cidade1.png')  # adicionei o fundo
 
 personagem = pygame.image.load('lara.central.1.png')
-personagem_direita = [pygame.image.load("lara_direita1.png"),   # teste para movimentação do personagem
+personagem_direita = [pygame.image.load("lara_direita1.png"),   # teste para movimentação do personagem não esta dadando certo
                       pygame.image.load("lara_direita.2.png"),
                       pygame.image.load("lara_direita.3.png"),
                       pygame.image.load("lara_direita.4.png"),
