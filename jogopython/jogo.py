@@ -21,7 +21,7 @@ personagem_direita = [pygame.image.load("lara_direita1.png"),   # teste para mov
                       pygame.image.load("lara_direita.7.png"),
                       pygame.image.load("lara.central.2.png"),]
 
-personagem_esquerda = [pygame.image.load("lara.centro.esquerda.png"),
+personagem_esquerda = [pygame.image.load("lara.cento.esquerda.png"),
                        pygame.image.load("lara.esquerda.1.png"),
                        pygame.image.load("lara.esquerda.2.png"),
                        pygame.image.load("lara.esquerda.3.png"),
@@ -31,25 +31,25 @@ personagem_esquerda = [pygame.image.load("lara.centro.esquerda.png"),
                        pygame.image.load("lara.esquerda.7.png"),
                        pygame.image.load("lara.esquerda.8.png"),]
 
-personagem_frente = [pygame.imagem.load("lara.frente.1.png"),
-                     pygame.imagem.load("lara.frente.2.png"),
-                     pygame.imagem.load("lara.frente.3.png"),
-                     pygame.imagem.load("lara.frente.4.png"),
-                     pygame.imagem.load("lara.frente.5.png"),
-                     pygame.imagem.load("lara.frente.6.png"),
-                     pygame.imagem.load("lara.frente.7.png"),
-                     pygame.imagem.load("lara.frente.8.png"),
-                     pygame.imagem.load("lara.frente.9.png"),]
+personagem_frente = [pygame.image.load("lara.frente.1.png"),
+                     pygame.image.load("lara.frente.2.png"),
+                     pygame.image.load("lara.frente.3.png"),
+                     pygame.image.load("lara.frente.4.png"),
+                     pygame.image.load("lara.frente.5.png"),
+                     pygame.image.load("lara.frente.6.png"),
+                     pygame.image.load("lara.frente.7.png"),
+                     pygame.image.load("lara.frente.8.png"),
+                     pygame.image.load("lara.frente.9.png"),]
 
-personagem_costa = [pygame.imagem.load("lara.costa.1.png"),
-                    pygame.imagem.load("lara.costa.2.png"),
-                    pygame.imagem.load("lara.costa.3.png"),
-                    pygame.imagem.load("lara.costa.4.png"),
-                    pygame.imagem.load("lara.costa.5.png"),
-                    pygame.imagem.load("lara.costa.6.png"),
-                    pygame.imagem.load("lara.costa.7.png"),
-                    pygame.imagem.load("lara.costa.8.png"),
-                    pygame.imagem.load("lara.costa.9.png"),]
+personagem_costa = [pygame.image.load("lara.costa.1.png"),
+                    pygame.image.load("lara.costa.2.png"),
+                    pygame.image.load("lara.costa.3.png"),
+                    pygame.image.load("lara.costa.4.png"),
+                    pygame.image.load("lara.costa.5.png"),
+                    pygame.image.load("lara.costa.6.png"),
+                    pygame.image.load("lara.costa.7.png"),
+                    pygame.image.load("lara.costa.8.png"),
+                    pygame.image.load("lara.costa.9.png"),]
 
 def desenhos():
     global andar
@@ -86,25 +86,25 @@ while janela_aberta :
             janela_aberta = False
 
     comandos = pygame.key.get_pressed()    # Comando para o controle do persongem
-    if comandos[pygame.K_UP]:
+    if comandos[pygame.K_a]:
         y_personagem -= velocidade_personagem
         esquerda = True
         direita = False
         costa = False
         frente = False
-    elif comandos[pygame.K_DOWN]:
+    elif comandos[pygame.K_w]:
         y_personagem += velocidade_personagem
         direita = True
         esquerda = False
         costa = False
         frente = False
-    elif comandos[pygame.K_RIGHT]:
+    elif comandos[pygame.K_d]:
         x_personagem += velocidade_personagem
         direita = False
         esquerda = False
         frente = False
         costa = True
-    elif comandos[pygame.K_LEFT]:
+    elif comandos[pygame.K_x]:
         x_personagem -= velocidade_personagem
         direita = False
         esquerda = False
