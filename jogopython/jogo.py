@@ -81,18 +81,19 @@ janela_aberta = True     # laço para manter a janela aberta
 while janela_aberta :
     pygame.time.delay(50)
 
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             janela_aberta = False
 
     comandos = pygame.key.get_pressed()    # Comando para o controle do persongem
-    if comandos[pygame.K_a]:
+    if comandos[pygame.K_w]:
         y_personagem -= velocidade_personagem
         esquerda = True
         direita = False
         costa = False
         frente = False
-    elif comandos[pygame.K_w]:
+    elif comandos[pygame.K_s]:
         y_personagem += velocidade_personagem
         direita = True
         esquerda = False
@@ -104,7 +105,7 @@ while janela_aberta :
         esquerda = False
         frente = False
         costa = True
-    elif comandos[pygame.K_x]:
+    elif comandos[pygame.K_a]:
         x_personagem -= velocidade_personagem
         direita = False
         esquerda = False
@@ -116,12 +117,14 @@ while janela_aberta :
         frente = False
         costa = False
         walkcount = 0
+
+    pygame.display.update()
     desenhos()
 
 janela.blit()
 
 janela.blit(personagem,(x_personagem,y_personagem)) # exibir personagem na tela
-pygame.display.update()
+
 
 pygame.quit()
 
