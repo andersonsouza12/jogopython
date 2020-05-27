@@ -1,7 +1,8 @@
 import pygame
-pygame.init ()
-     # variaveis do personagem
-x_personagem = 120
+
+pygame.init()
+# variaveis do personagem
+x_personagem = 1000
 y_personagem = 200
 velocidade_personagem = 10
 esquerda = False
@@ -9,64 +10,75 @@ direita = False
 costas = False
 frente = False
 andar = 0
-fundo = pygame.image.load('cidade1.png')  # adicionei o fundo
+                                  #posições do zombie3
+x_zombie3 = 220
+y_zombie3 = 330
+velocidade_zombie3 = 20
 
-personagem = pygame.image.load('lara.central.1.png')
-personagem_direita = [pygame.image.load("lara_direita1.png"),   # teste para movimentação do personagem não esta dadando certo
-                      pygame.image.load("lara_direita.2.png"),
-                      pygame.image.load("lara_direita.3.png"),
-                      pygame.image.load("lara_direita.4.png"),
-                      pygame.image.load("lara_direita.5.png"),
-                      pygame.image.load("lara_direita.6.png"),
-                      pygame.image.load("lara_direita.7.png"),
-                      pygame.image.load("lara.central.2.png"),]
 
-personagem_esquerda = [pygame.image.load("lara.cento.esquerda.png"),
-                       pygame.image.load("lara.esquerda.1.png"),
-                       pygame.image.load("lara.esquerda.2.png"),
-                       pygame.image.load("lara.esquerda.3.png"),
-                       pygame.image.load("lara.esquerda.4.png"),
-                       pygame.image.load("lara.esquerda.5.png"),
-                       pygame.image.load("lara.esquerda.6.png"),
-                       pygame.image.load("lara.esquerda.7.png"),
-                       pygame.image.load("lara.esquerda.8.png"),]
 
-personagem_frente = [pygame.image.load("lara.frente.1.png"),
-                     pygame.image.load("lara.frente.2.png"),
-                     pygame.image.load("lara.frente.3.png"),
-                     pygame.image.load("lara.frente.4.png"),
-                     pygame.image.load("lara.frente.5.png"),
-                     pygame.image.load("lara.frente.6.png"),
-                     pygame.image.load("lara.frente.7.png"),
-                     pygame.image.load("lara.frente.8.png"),
-                     pygame.image.load("lara.frente.9.png"),]
 
-personagem_costa = [pygame.image.load("lara.costa.1.png"),
-                    pygame.image.load("lara.costa.2.png"),
-                    pygame.image.load("lara.costa.3.png"),
-                    pygame.image.load("lara.costa.4.png"),
-                    pygame.image.load("lara.costa.5.png"),
-                    pygame.image.load("lara.costa.6.png"),
-                    pygame.image.load("lara.costa.7.png"),
-                    pygame.image.load("lara.costa.8.png"),
-                    pygame.image.load("lara.costa.9.png"),]
+                                             # imagens da  movimentção personagem
 
-def desenhos():
+personagem = pygame.image.load("jhon_frente1.png")
+personagem_direita = [pygame.image.load("jhon_Direita1.png"),
+                      pygame.image.load("jhon_Direita2.png"),
+                      pygame.image.load("jhon_Direita3.png"), ]
+
+
+personagem_esquerda = [pygame.image.load("jhon_Esquerda1.png"),
+                       pygame.image.load("jhon_Esquerda2.png"),
+                       pygame.image.load("jhon_Esquerda3.png"), ]
+
+personagem_frente = [pygame.image.load("jhon_frente1.png"),
+                     pygame.image.load("jhon_frente2.png"),
+                     pygame.image.load("john_frente3.png"), ]
+
+personagem_costa = [pygame.image.load("jhon_Costa1.png"),
+                    pygame.image.load("jhon_Costa2.png"),
+                    pygame.image.load("jhon_Costa3.png"), ]
+
+                                    # imagem da movimentação do zombie3
+zombie3 = pygame.image.load("zombie3_costa1.png")
+zombie3_costa = [pygame.image.load("zombie3_costa1.png"),
+                 pygame.image.load("zombie3_costa2.png"),
+                 pygame.image.load("zombie3_costa3.png"), ]
+
+
+
+
+
+
+
+
+inicio = pygame.image.load("inicioo.jpg")
+fundo = inicio
+historia1 = pygame.image.load("fumaça_1.jpg")
+historia2 = pygame.image.load("fumaça_2.jpg")
+fundo1 = pygame.image.load('Cenario1.jpg')
+fundo2 = pygame.image.load('Fundo2.jpg')
+fundo3 = pygame.image.load("Fundo3.jpg")
+fundo4 = pygame.image.load("Fundo4.jpg")
+
+
+
+def desenhos():                              # # codigo da movimnetação do personagem
     global andar
 
-    janela.blit(fundo,(0,0))        # codigo da movimnetação do personagem
+    janela.blit(fundo, (0, 0))
     if andar + 1 >= 25:
         andar = 0
     if esquerda:
-        janela.blit(personagem_esquerda[andar // 3],  (x_personagem, y_personagem))
+        janela.blit(personagem_esquerda[andar // 3], (x_personagem, y_personagem))
         andar += 1
     elif direita:
         janela.blit(personagem_direita[andar // 3], (x_personagem, y_personagem))
-    elif costas:
-        janela.blit(personagem_costa[andar // 3], (x_personagem, y_personagem))
         andar += 1
     elif frente:
         janela.blit(personagem_frente[andar // 3], (x_personagem, y_personagem))
+        andar += 1
+    elif costa:
+        janela.blit(personagem_costa[andar // 3], (x_personagem, y_personagem))
         andar += 1
     else:
         janela.blit(personagem, (x_personagem, y_personagem))
@@ -74,38 +86,43 @@ def desenhos():
 
 
 
-janela = pygame.display.set_mode((800,500))        # temanho da janela
+
+janela = pygame.display.set_mode((772, 500))                    # temanho da janela
 pygame.display.set_caption("JOGO PYTHON")
+janela.blit(personagem, (x_personagem, y_personagem))      # exibir personagem na tela
 
-janela_aberta = True     # laço para manter a janela aberta
-while janela_aberta :
+pygame.display.update()
+
+
+
+janela_aberta = True                                    # laço para manter a janela aberta
+while janela_aberta:
     pygame.time.delay(50)
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             janela_aberta = False
 
-    comandos = pygame.key.get_pressed()    # Comando para o controle do persongem
-    if comandos[pygame.K_w]:
+    comandos = pygame.key.get_pressed()             # Comando para o controle do persongem
+    if comandos[pygame.K_UP]:
         y_personagem -= velocidade_personagem
         esquerda = True
         direita = False
         costa = False
         frente = False
-    elif comandos[pygame.K_s]:
+    elif comandos[pygame.K_DOWN]:
         y_personagem += velocidade_personagem
         direita = True
         esquerda = False
         costa = False
         frente = False
-    elif comandos[pygame.K_d]:
+    elif comandos[pygame.K_RIGHT]:
         x_personagem += velocidade_personagem
         direita = False
         esquerda = False
         frente = False
         costa = True
-    elif comandos[pygame.K_a]:
+    elif comandos[pygame.K_LEFT]:
         x_personagem -= velocidade_personagem
         direita = False
         esquerda = False
@@ -118,15 +135,70 @@ while janela_aberta :
         costa = False
         walkcount = 0
 
+
     pygame.display.update()
     desenhos()
 
-janela.blit()
 
-janela.blit(personagem,(x_personagem,y_personagem)) # exibir personagem na tela
+
+
+    #mudar imagem inicia para historia
+
+    if fundo == inicio and comandos[pygame.K_e]:     #tela inicio aporetar e mudar tela
+        fundo = historia1
+        x_personagem = 20000
+        pygame.display.update()
+
+    if fundo == historia1 and comandos[pygame.K_r]:      #segunda tela das historias
+        fundo = historia2
+        x_personagem = 10000
+        pygame.display.update()
+
+    if fundo == historia2 and comandos[pygame.K_e]:    #terçeira tela das historias
+        fundo = fundo1
+        x_personagem = 115
+        y_personagem = 170
+        pygame.display.update()
+
+        #mudança de telas
+
+
+                                             # troca de tela
+    if fundo == fundo1:
+        if x_personagem < 22:
+           x_personagem = 23
+        if x_personagem > 772:           #troca fundo1 p/fundo2
+            fundo = fundo2
+            x_personagem = 90        #localização_personagem tela2
+            y_personagem = 192
+            #troca de tela
+
+    if fundo == fundo2:
+        if x_personagem < 3:          #para voltar a tela anterior
+            fundo = fundo1
+            x_personagem = 200          #localização do personagem leta3
+        if x_personagem > 772:           #troca fundo2 p/ fundo3
+            fundo = fundo3
+            x_personagem = 20
+
+    if fundo == fundo3:
+        if x_personagem < 4:             # if para voltar a tela anterior
+            fundo = fundo2
+            x_personagem = 770
+            y_personagem = 90
+        if y_personagem > 500:               #troca fundo3 p/ fundo4
+            fundo = fundo4
+            x_personagem = 300
+            y_personagem = 108
+            pygame.display.update()
+
+
+
 
 
 pygame.quit()
+janela.blit()
+
 
 
 
