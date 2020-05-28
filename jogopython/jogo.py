@@ -11,10 +11,10 @@ costas = False
 frente = False
 andar = 0
                                   #posições do zombie3
-x_zombie3 = 1000
-y_zombie3 = 200
-velocidade_zombie3 = 10
-andar_zombie3 = 0
+#x_zombie3 = 1000
+#y_zombie3 = 200
+#velocidade_zombie3 = 10
+#andar_zombie3 = 0
 
 
 
@@ -87,7 +87,7 @@ def desenhos():                              # # codigo da movimnetação do per
 
 janela = pygame.display.set_mode((772, 500))                    # temanho da janela
 pygame.display.set_caption("JOGO PYTHON")
-janela.blit(personagem, (x_personagem, y_personagem))      # exibir personagem na tela
+janela.blit(personagem,(x_personagem, y_personagem))      # exibir personagem na tela
 
 pygame.display.update()
 
