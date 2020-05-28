@@ -1,8 +1,8 @@
 import pygame
 
 pygame.init()
-# variaveis do personagem
-x_personagem = 1000
+# variaveis do personagem                            ## x é a largura da tela
+x_personagem = 1000                                     ## y é a altura da tela
 y_personagem = 200
 velocidade_personagem = 10
 esquerda = False
@@ -11,10 +11,10 @@ costas = False
 frente = False
 andar = 0
                                   #posições do zombie3
-x_zombie3 = 220
-y_zombie3 = 330
-velocidade_zombie3 = 20
-
+x_zombie3 = 1000
+y_zombie3 = 200
+velocidade_zombie3 = 10
+andar_zombie3 = 0
 
 
 
@@ -38,12 +38,10 @@ personagem_costa = [pygame.image.load("jhon_Costa1.png"),
                     pygame.image.load("jhon_Costa2.png"),
                     pygame.image.load("jhon_Costa3.png"), ]
 
-                                    # imagem da movimentação do zombie3
-zombie3 = pygame.image.load("zombie3_costa1.png")
-zombie3_costa = [pygame.image.load("zombie3_costa1.png"),
-                 pygame.image.load("zombie3_costa2.png"),
-                 pygame.image.load("zombie3_costa3.png"), ]
-
+                                 # imagem da movimentação do zombie3
+zombie3 = [pygame.image.load("zombie3_costa1.png"),
+           pygame.image.load("zombie3_costa2.png"),
+           pygame.image.load("zombie3_costa3.png"), ]
 
 
 
@@ -95,7 +93,10 @@ pygame.display.update()
 
 
 
+
 janela_aberta = True                                    # laço para manter a janela aberta
+
+
 while janela_aberta:
     pygame.time.delay(50)
 
@@ -144,17 +145,18 @@ while janela_aberta:
 
     #mudar imagem inicia para historia
 
-    if fundo == inicio and comandos[pygame.K_e]:     #tela inicio aporetar e mudar tela
+    if fundo == inicio and comandos[pygame.K_RIGHT]:     #tela inicio aporetar e mudar tela
         fundo = historia1
         x_personagem = 20000
         pygame.display.update()
 
-    if fundo == historia1 and comandos[pygame.K_r]:      #segunda tela das historias
+    elif fundo == historia1 and comandos[pygame.K_RIGHT]:      #segunda tela das historias
         fundo = historia2
         x_personagem = 10000
         pygame.display.update()
 
-    if fundo == historia2 and comandos[pygame.K_e]:    #terçeira tela das historias
+    elif fundo == historia2 and comandos[pygame.K_RIGHT]:    #terçeira tela das historias
+
         fundo = fundo1
         x_personagem = 115
         y_personagem = 170
@@ -165,32 +167,49 @@ while janela_aberta:
 
                                              # troca de tela
     if fundo == fundo1:
-        if x_personagem < 22:
+        if x_personagem < 22:               # colisão tela 1
            x_personagem = 23
+        if y_personagem < 122:
+            y_personagem = 123
+        if y_personagem > 180:
+            y_personagem = 181
         if x_personagem > 772:           #troca fundo1 p/fundo2
             fundo = fundo2
             x_personagem = 90        #localização_personagem tela2
             y_personagem = 192
-            #troca de tela
+
+        if x_personagem > 772:
+            x_zombie3 = 120
+            y_zombie3 = 100
+
 
     if fundo == fundo2:
         if x_personagem < 3:          #para voltar a tela anterior
-            fundo = fundo1
-            x_personagem = 200          #localização do personagem leta3
-        if x_personagem > 772:           #troca fundo2 p/ fundo3
+            x_personagem = 4
+        if y_personagem < 193:               # colisão tela 2
+            y_personagem = 194
+        if y_personagem > 204:
+            y_personagem = 205
+        if x_personagem > 750:           #troca fundo2 p/ fundo3
             fundo = fundo3
-            x_personagem = 20
+            x_personagem = 10
+
 
     if fundo == fundo3:
         if x_personagem < 4:             # if para voltar a tela anterior
             fundo = fundo2
-            x_personagem = 770
-            y_personagem = 90
+        if y_personagem < 118:          # if colisão tela 3
+            y_personagem = 119
+
+
+
         if y_personagem > 500:               #troca fundo3 p/ fundo4
             fundo = fundo4
             x_personagem = 300
             y_personagem = 108
-            pygame.display.update()
+
+
+        pygame.display.update()
 
 
 
