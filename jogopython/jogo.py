@@ -16,10 +16,10 @@ direita = False
 costas = False
 frente = False
 andar = 0
-
+                    # x e y da esposa do personagem
 x_esposa = 120
 y_esposa = 200
-
+                                   #posicao e velocidade e imagens dos zombie
 
 
 zombie = Zombie(570, 300, 9, pygame.image.load("images/zombie1_costa1.png"))
@@ -54,25 +54,23 @@ esposa = pygame.image.load("images/Esposa.png")
 
 
 
-
-        #loop da musica do Jogo
-
-
-inicio = pygame.image.load("images/inicioo.jpg")
+inicio = pygame.image.load("images/Tela_inicial.jpg")         #imagens do jogo
 fundo = inicio
-historia1 = pygame.image.load("images/fumaça_1.jpg")
-historia2 = pygame.image.load("images/fumaça_2.jpg")
+historia1 = pygame.image.load("images/Historia1.png")
+historia2 = pygame.image.load("images/Historia2.png")
 fundo1 = pygame.image.load('images/Cenario1.jpg')
 fundo2 = pygame.image.load('images/Fundo2.jpg')
 fundo3 = pygame.image.load("images/Fundo3.jpg")
 fundo4 = pygame.image.load("images/Fundo4.jpg")
 fundoFinal = pygame.image.load("images/Final.png")
-gameover = pygame.image.load("images/GameOver.jpg")
-vida_personagem = 4
-font = pygame.font.SysFont("arial black",18)
-texto = font.render("VIDA: "+ str(vida_personagem), True, (255, 255, 255), (77, 121, 255))
+gameover = pygame.image.load("images/Game_Over.jpg")
+
+
+vida_personagem = 4                                  #vida e string pra exibir na tela
+font = pygame.font.SysFont("arial black", 18)
+texto = font.render("VIDA: " + str(vida_personagem), True, (255, 255, 255), (77, 121, 255))
 pos_texto = texto.get_rect()
-pos_texto.center = (50,18,)
+pos_texto.center = (50, 18,)
 
 
 def desenhos():                              # # codigo da movimnetação do personagem
@@ -99,11 +97,12 @@ def desenhos():                              # # codigo da movimnetação do per
 
 
 janela = pygame.display.set_mode((constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL))   # temanho da janela
-pygame.display.set_caption("JOGO PYTHON")
+pygame.display.set_caption("Taking the cure")
 janela.blit(personagem, (x_personagem, y_personagem))     # exibir personagem na tela
 
 
 janela_aberta = True
+
 pygame.display.update()
 
                                  # laço para manter a janela aberta
@@ -157,19 +156,19 @@ while janela_aberta:
         x_personagem = 20000
         pygame.display.update()
 
-    elif fundo == historia1 and comandos[pygame.K_UP]:      #segunda tela das historias
+    elif fundo == historia1 and comandos[pygame.K_UP]:      #segunda tela das historias1
         fundo = historia2
         x_personagem = 10000
         pygame.display.update()
 
-    elif fundo == historia2 and comandos[pygame.K_RIGHT]:    #terçeira tela das historias
+    elif fundo == historia2 and comandos[pygame.K_RIGHT]:    #terçeira tela das historias2
 
         fundo = fundo1
         x_personagem = 115
         y_personagem = 170
         pygame.display.update()
 
-        #mudança de telas
+        # musica do jogo
 
         pygame.mixer.init()
         pygame.mixer.music.load("musics/Call of Duty 4 Modern Warfare OST - All In.mp3")
@@ -219,11 +218,11 @@ while janela_aberta:
             x_personagem = 300
             y_personagem = 108
 
-    if fundo == fundo2:                 # if para zombies tela 2
+    if fundo == fundo2:                         # if para zombies tela 2
         zombie.andarVertical(janela, -2)
         zombie2.andarVertical(janela, -2)
         zombie3.andarVertical(janela, -2)
-        zombie4.andarVertical(janela, -2)
+        zombie4.andarVertical(janela, -2)                                        #colisão zombie
         if y_personagem in range(zombie.vertical - 20, zombie.vertical) and \
                 x_personagem in range(zombie.horizontal - 15, zombie.horizontal + 15):
                 vida_personagem -= 1
@@ -317,7 +316,7 @@ while janela_aberta:
             y_personagem = 99
 
 
-        if x_personagem > 380:
+        if x_personagem > 380:     # if da tela final
             fundo = fundoFinal
             y_personagem = 1000
         janela.blit(esposa, (x_esposa, y_esposa))
@@ -328,8 +327,15 @@ while janela_aberta:
        if x_personagem > 710:
           x_personagem = 708
 
+    if fundo == gameover:         #pausa a musica
+        pygame.mixer.music.pause()
 
-     #colisão
+
+
+
+
+
+
 
 pygame.quit()
 janela.blit()
