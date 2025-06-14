@@ -45,7 +45,7 @@ font = pygame.font.SysFont("arial black", 18)
 zombies_fundo2 = carregar_zombies_fundo2()
 
 # Carregar e redimensionar logo
-logo_original = pygame.image.load("img/logo/logo.png")
+logo_original = pygame.image.load("img/logo/logo.jpg")
 logo_redimensionada = pygame.transform.scale(logo_original, (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL))
 janela.blit(logo_redimensionada, (0, 0))
 pygame.display.update()
