@@ -81,7 +81,7 @@ def carregar_telas():
         "fundo2": pygame.transform.scale(pygame.image.load("img/cenario/Fundo2.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo3": pygame.transform.scale(pygame.image.load("img/cenario/Fundo3.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo4": pygame.transform.scale(pygame.image.load("img/cenario/Fundo4.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
-        "final": pygame.transform.scale(pygame.image.load("img/logo/logo.png"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
+        "final": pygame.transform.scale(pygame.image.load("img/logo/logo.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "gameover": pygame.transform.scale(pygame.image.load("img/Game_Over.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),    
     }
 
