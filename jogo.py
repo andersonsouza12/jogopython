@@ -15,7 +15,13 @@ from utils import (
     carregar_imagem_esposa
 )
 
-from jogopython.zombie import Zombie, carregar_zombies_fundo2
+from jogopython.zombie import (
+    Zombie, 
+    carregar_zombies_fundo2, 
+    desenhar_zombies_fundo2,
+    carregar_zombies_fundo3, 
+    desenhar_zombies_fundo3
+)
 
 
 
@@ -33,6 +39,8 @@ pygame.display.set_caption("Taking the Cure")
 telas = carregar_telas()
 personagem_sprites = carregar_imagens_personagem()
 zombies_fundo2 = carregar_zombies_fundo2()
+zombies_fundo3 = carregar_zombies_fundo3()
+
 
 # Estados iniciais
 
@@ -144,6 +152,17 @@ while rodando:
     # Redesenhar tudo
     janela.blit(telas[fundo_atual], (0, 0))
     # Se estiver no fundo4, desenha a esposa
+
+    # Desenhar e mover os zombies, se for o fundo2
+    if fundo_atual == "fundo2":
+        desenhar_zombies_fundo2(janela, zombies_fundo2)
+
+
+    if fundo_atual == "fundo3":
+        desenhar_zombies_fundo3(janela, zombies_fundo3)
+
+
+
     if fundo_atual == "fundo4":     #x   y
         janela.blit(image_esposa, (500,350))
 
