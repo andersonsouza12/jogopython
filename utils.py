@@ -112,17 +112,6 @@ def verificar_colisao_personagem_zombie(x_personagem, y_personagem, zombies, vid
     return False, vida_personagem
 
 
-def carregar_zombies_fundo2():
-    
-    return [
-        Zombie(570, 300, 9, pygame.image.load("img/zombie/zombie1_costa1.png")),
-        Zombie(300, 380, 6, pygame.image.load("img/zombie/zombie2_costa1.png")),
-        Zombie(300, 495, 6, pygame.image.load("img/zombie/zombie3_costa1.png")),
-        Zombie(570, 495, 9, pygame.image.load("img/zombie/zombie4_costa1.png")),
-        Zombie(500, 600, random.randint(5, 10), pygame.image.load("img/zombie/zombie5_costa1.png")),
-        Zombie(430, 700, random.randint(3, 7), pygame.image.load("img/zombie/zombie6_costa.png")),
-        Zombie(470, 700, random.randint(5, 10), pygame.image.load("img/zombie/zombie7_costa.png")),
-    ]
 
 
 def verificar_colisoes_tela(fundo_atual, x_personagem, y_personagem):
@@ -180,3 +169,4 @@ def verificar_colisoes_tela(fundo_atual, x_personagem, y_personagem):
 
 
     return fundo_atual, x_personagem, y_personagem
+
