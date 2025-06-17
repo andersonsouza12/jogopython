@@ -7,25 +7,23 @@ import constants
 
 def carregar_zombies_fundo2():
     return [
-        Zombie(570, 300, 9, pygame.image.load("img/zombie/zombie1_costa1.png")),
-        Zombie(300, 380, 6, pygame.image.load("img/zombie/zombie2_costa1.png")),
-        Zombie(300, 495, 6, pygame.image.load("img/zombie/zombie3_costa1.png")),
-        Zombie(570, 495, 9, pygame.image.load("img/zombie/zombie4_costa1.png")),
+        Zombie(570, 300, constants.ZOMBIE1_FUNDO2_VELOCIDADE, pygame.image.load("img/zombie/zombie1_costa1.png")),
+        Zombie(300, 380, constants.ZOMBIE2_FUNDO2_VELOCIDADE, pygame.image.load("img/zombie/zombie2_costa1.png")),
+        Zombie(300, 495, constants.ZOMBIE3_FUNDO2_VELOCIDADE, pygame.image.load("img/zombie/zombie3_costa1.png")),
+        Zombie(570, 495, constants.ZOMBIE4_FUNDO2_VELOCIDADE, pygame.image.load("img/zombie/zombie4_costa1.png")),
     ]
-
 def desenhar_zombies_fundo2(janela, zombies):
     for zombie in zombies:
         zombie.andarVertical(janela, -2, constants.TAMANHO_VERTICAL)
 
 def carregar_zombies_fundo3():
     return [
-        Zombie(500, 600, random.randint(5, 10), pygame.image.load("img/zombie/zombie5_costa1.png")),
-        Zombie(430, 700, random.randint(3, 7), pygame.image.load("img/zombie/zombie6_costa.png")),
-        Zombie(470, 700, random.randint(5, 10), pygame.image.load("img/zombie/zombie7_costa.png")),
-        Zombie(290, -8, -9, pygame.image.load("img/zombie/zombie3_frente1.png")),   # Contrario
-        Zombie(255, -15, -8, pygame.image.load("img/zombie/zombie2_frente1.png"))   # Contrario
+        Zombie(500, 600, random.randint(*constants.ZOMBIE5_FUNDO3_VELOCIDADE), pygame.image.load("img/zombie/zombie5_costa1.png")),
+        Zombie(430, 700, random.randint(*constants.ZOMBIE6_FUNDO3_VELOCIDADE), pygame.image.load("img/zombie/zombie6_costa.png")),
+        Zombie(470, 700, random.randint(*constants.ZOMBIE7_FUNDO3_VELOCIDADE), pygame.image.load("img/zombie/zombie7_costa.png")),
+        Zombie(290, -8, constants.ZOMBIE1_FRENTE_FUNDO3_VELOCIDADE, pygame.image.load("img/zombie/zombie3_frente1.png")),   # Contrário
+        Zombie(255, -15, constants.ZOMBIE2_FRENTE_FUNDO3_VELOCIDADE, pygame.image.load("img/zombie/zombie2_frente1.png"))   # Contrário
     ]
-
 
 def desenhar_zombies_fundo3(janela, zombies):
     for i, zombie in enumerate(zombies):

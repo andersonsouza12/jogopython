@@ -98,18 +98,23 @@ def carregar_imagem_esposa():
 
 
 
-def atualizar_texto_vida(font, vida_personagem):
+def atualizar_texto_vida(janela, vida_personagem):
+    font = pygame.font.SysFont("arial black", 32)
     return font.render(f"VIDA: {vida_personagem}", True, (255, 255, 255), (77, 121, 255))
 
 
-def verificar_colisao_personagem_zombie(x_personagem, y_personagem, zombies, vida_personagem):
+def verificar_colisao_personagem_zombie(x_personagem, y_personagem, largura, altura, zombies, vida_atual):
+    personagem_rect = pygame.Rect(x_personagem, y_personagem, largura, altura)
+
     for zombie in zombies:
-        if y_personagem in range(zombie.vertical - 20, zombie.vertical) and \
-           x_personagem in range(zombie.horizontal - 15, zombie.horizontal + 15):
-            vida_personagem -= 1
-            if vida_personagem == 0:
-                return True, vida_personagem
-    return False, vida_personagem
+        zombie_rect = pygame.Rect(zombie.horizontal, zombie.vertical, zombie.imagem.get_width(), zombie.imagem.get_height())
+
+        if personagem_rect.colliderect(zombie_rect):
+            vida_atual -= 1
+            pygame.time.delay(300)  # Pequena pausa para evitar perda de várias vidas em um único frame
+            break
+
+    return vida_atual
 
 
 
