@@ -119,14 +119,17 @@ font = pygame.font.SysFont("arial black", 32)
 fundo_atual = "fundo1"  # por exemplo, antes do loop principal
 
 contador = 0
-movendo = False
 rodando = True
+
+imagens_personagem = carregar_imagens_personagem()
+vida_personagem = 4
+contador = 0
+
 while rodando:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             rodando = False
 
-    # Movimento do personagem
     teclas = pygame.key.get_pressed()
     movendo = False
     if teclas[pygame.K_LEFT]:
@@ -146,41 +149,39 @@ while rodando:
         direcao = "frente"
         movendo = True
 
-
-    # Verifica colisões com bordas da tela e troca de fundo
     fundo_atual, x_personagem, y_personagem = verificar_colisoes_tela(fundo_atual, x_personagem, y_personagem)
-    # Redesenhar tudo
     janela.blit(telas[fundo_atual], (0, 0))
-    # Se estiver no fundo4, desenha a esposa
 
-    # Desenhar e mover os zombies, se for o fundo2
     if fundo_atual == "fundo2":
         desenhar_zombies_fundo2(janela, zombies_fundo2)
-
+        vida_personagem = verificar_colisao_personagem_zombie(x_personagem, y_personagem, constants.LARGURA_PERSONAGEM, constants.ALTURA_PERSONAGEM, zombies_fundo2, vida_personagem)
 
     if fundo_atual == "fundo3":
         desenhar_zombies_fundo3(janela, zombies_fundo3)
+        vida_personagem = verificar_colisao_personagem_zombie(x_personagem, y_personagem, constants.LARGURA_PERSONAGEM, constants.ALTURA_PERSONAGEM, zombies_fundo3, vida_personagem)
 
+    if vida_personagem <= 0:
+        print("Game Over!")
+        rodando = False
 
-
-    if fundo_atual == "fundo4":     #x   y
+    if fundo_atual == "fundo4":
         janela.blit(image_esposa, (500,350))
 
-     # Desenhar personagem com fundo e contador
     if movendo:
-        contador = desenhar_personagem(janela, personagem_sprites, x_personagem, y_personagem, direcao, contador)
+        contador = desenhar_personagem(janela, imagens_personagem, x_personagem, y_personagem, direcao, contador)
     else:
-        janela.blit(personagem_sprites[direcao][0], (x_personagem, y_personagem))
-        
+        janela.blit(imagens_personagem[direcao][0], (x_personagem, y_personagem))
+
     texto_vida = atualizar_texto_vida(font, vida_personagem)
     janela.blit(texto_vida, (10, 10))
 
-    # Atualizar a tela
     pygame.display.update()
     clock.tick(30)
 
 pygame.quit()
 exit()
+
+
 
 
 
