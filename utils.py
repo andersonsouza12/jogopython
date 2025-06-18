@@ -30,8 +30,6 @@ def desenhar_texto_digitando(tela, texto_completo, fonte, cor, pos, largura_max,
         tela.blit(renderizada, (pos[0], pos[1] + y_offset))
         y_offset += fonte.get_height()
 
-
-
 def desenhar_tela_inicial(tela):
     fonte = pygame.font.SysFont("Arial", 30)
     texto = fonte.render("Pressione Enter para Iniciar", True, (255, 255, 255))
@@ -75,13 +73,13 @@ def carregar_imagens_personagem():
 def carregar_telas():
     
     return {
-        "logo": pygame.transform.scale(pygame.image.load("img/logo/logo.jpg"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
+        "logo": pygame.transform.scale(pygame.image.load("img/logo/logo.png"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundoHitory": pygame.transform.scale(pygame.image.load("img/fundoHitory.png"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo1": pygame.transform.scale(pygame.image.load("img/cenario/Cenario1.jpg"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo2": pygame.transform.scale(pygame.image.load("img/cenario/Fundo2.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo3": pygame.transform.scale(pygame.image.load("img/cenario/Fundo3.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo4": pygame.transform.scale(pygame.image.load("img/cenario/Fundo4.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
-        "final": pygame.transform.scale(pygame.image.load("img/logo/logo.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
+        "final": pygame.transform.scale(pygame.image.load("img/logo/logo.png"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "gameover": pygame.transform.scale(pygame.image.load("img/Game_Over.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),    
     }
 

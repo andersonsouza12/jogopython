@@ -23,8 +23,6 @@ from jogopython.zombie import (
     desenhar_zombies_fundo3
 )
 
-
-
 pygame.init()
 
 # Música de fundo
@@ -34,44 +32,32 @@ pygame.mixer.music.play(-1)
 # Tela
 janela = pygame.display.set_mode((constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL))
 pygame.display.set_caption("Taking the Cure")
+font = pygame.font.SysFont("arial black", 18)
 
 # Carregamento
 telas = carregar_telas()
 personagem_sprites = carregar_imagens_personagem()
 zombies_fundo2 = carregar_zombies_fundo2()
 zombies_fundo3 = carregar_zombies_fundo3()
-
-
-# Estados iniciais
-
-direcao = "frente"
+zombies_fundo2 = carregar_zombies_fundo2()
+image_esposa = carregar_imagem_esposa()
+imagens_personagem = carregar_imagens_personagem()
 
 fundo = telas["logo"]
 
-
-font = pygame.font.SysFont("arial black", 18)
-zombies_fundo2 = carregar_zombies_fundo2()
-
 # Carregar e redimensionar logo
-logo_original = pygame.image.load("img/logo/logo.jpg")
+logo_original = pygame.image.load("img/logo/logo.png")
 logo_redimensionada = pygame.transform.scale(logo_original, (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL))
 janela.blit(logo_redimensionada, (0, 0))
 pygame.display.update()
 time.sleep(3)
 
-
-
-# ---------------------------
-# FASE 2: Texto sendo digitado
-# ---------------------------
 fundo = telas["fundoHitory"]
 texto_intro = constants.TEXTO_INTRO
 fonte_intro = pygame.font.SysFont("arial", 28)
 texto_parcial = []
 indice_letra = 0
 tempo_anterior = pygame.time.get_ticks()
-image_esposa = carregar_imagem_esposa()
-
 digitando = True
 esperando_enter = False
 
@@ -108,20 +94,16 @@ while digitando:
         janela.blit(aviso, (40, 460))
     pygame.display.update()
 
-# Continuação do jogo depois do loop...
 # Estados iniciais para a fase principal
 x_personagem, y_personagem = 300, 200
-vida_personagem = 4
 direcao = "frente"
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("arial black", 32)
 
-fundo_atual = "fundo1"  # por exemplo, antes do loop principal
-
+##fundo_atual = "fundo1"
+fundo_atual = "fundo3"
 contador = 0
 rodando = True
-
-imagens_personagem = carregar_imagens_personagem()
 vida_personagem = 4
 contador = 0
 
@@ -161,7 +143,7 @@ while rodando:
         vida_personagem = verificar_colisao_personagem_zombie(x_personagem, y_personagem, constants.LARGURA_PERSONAGEM, constants.ALTURA_PERSONAGEM, zombies_fundo3, vida_personagem)
 
     if vida_personagem <= 0:
-        print("Game Over!")
+        fundo = telas["gameover"]
         rodando = False
 
     if fundo_atual == "fundo4":
