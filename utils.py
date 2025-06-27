@@ -2,6 +2,9 @@ import pygame
 from random import randint
 import constants
 from jogopython.zombie import Zombie
+import time
+
+
 
 
 def desenhar_texto_digitando(tela, texto_completo, fonte, cor, pos, largura_max, texto_parcial):
@@ -29,8 +32,6 @@ def desenhar_texto_digitando(tela, texto_completo, fonte, cor, pos, largura_max,
         renderizada = fonte.render(render_linha, True, cor)
         tela.blit(renderizada, (pos[0], pos[1] + y_offset))
         y_offset += fonte.get_height()
-
-
 
 def desenhar_tela_inicial(tela):
     fonte = pygame.font.SysFont("Arial", 30)
@@ -75,13 +76,13 @@ def carregar_imagens_personagem():
 def carregar_telas():
     
     return {
-        "logo": pygame.transform.scale(pygame.image.load("img/logo/logo.jpg"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
+        "logo": pygame.transform.scale(pygame.image.load("img/logo/logo.png"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundoHitory": pygame.transform.scale(pygame.image.load("img/fundoHitory.png"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo1": pygame.transform.scale(pygame.image.load("img/cenario/Cenario1.jpg"), (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo2": pygame.transform.scale(pygame.image.load("img/cenario/Fundo2.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo3": pygame.transform.scale(pygame.image.load("img/cenario/Fundo3.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "fundo4": pygame.transform.scale(pygame.image.load("img/cenario/Fundo4.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
-        "final": pygame.transform.scale(pygame.image.load("img/logo/logo.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
+        "final": pygame.transform.scale(pygame.image.load("img/logo/logo.png"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),
         "gameover": pygame.transform.scale(pygame.image.load("img/Game_Over.jpg"),(constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL)),    
     }
 
@@ -175,3 +176,22 @@ def verificar_colisoes_tela(fundo_atual, x_personagem, y_personagem):
 
     return fundo_atual, x_personagem, y_personagem
 
+
+
+def mostrar_tela_final(janela, fonte, texto, fundo, delay=50):
+    texto_parcial = []
+    cor = (255, 255, 255)
+    largura_max = 700
+    x = 50
+    y = 50
+    fundo_convertido = pygame.transform.scale(fundo, (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL))
+    
+    for char in texto:
+        texto_parcial.append(char)
+        janela.blit(fundo_convertido, (0, 0))
+        desenhar_texto_digitando(janela, texto, fonte, cor, (x, y), largura_max, texto_parcial)
+        pygame.display.update()
+        pygame.time.delay(delay)
+
+    # Espera alguns 5 segundos após o texto
+    pygame.time.delay(5000)
