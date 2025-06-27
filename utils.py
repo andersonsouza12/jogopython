@@ -2,6 +2,9 @@ import pygame
 from random import randint
 import constants
 from jogopython.zombie import Zombie
+import time
+
+
 
 
 def desenhar_texto_digitando(tela, texto_completo, fonte, cor, pos, largura_max, texto_parcial):
@@ -173,3 +176,22 @@ def verificar_colisoes_tela(fundo_atual, x_personagem, y_personagem):
 
     return fundo_atual, x_personagem, y_personagem
 
+
+
+def mostrar_tela_final(janela, fonte, texto, fundo, delay=50):
+    texto_parcial = []
+    cor = (255, 255, 255)
+    largura_max = 700
+    x = 50
+    y = 50
+    fundo_convertido = pygame.transform.scale(fundo, (constants.TAMANHO_HORIZONTAL, constants.TAMANHO_VERTICAL))
+    
+    for char in texto:
+        texto_parcial.append(char)
+        janela.blit(fundo_convertido, (0, 0))
+        desenhar_texto_digitando(janela, texto, fonte, cor, (x, y), largura_max, texto_parcial)
+        pygame.display.update()
+        pygame.time.delay(delay)
+
+    # Espera alguns 5 segundos após o texto
+    pygame.time.delay(5000)
