@@ -28,10 +28,14 @@ Durante sua jornada, o personagem precisa:
 
 ### 🎬 Logo do Jogo
 **Antes:**
-![Logo antiga](img/readme/logo_antiga.jpg)
 
-**Depois:**
-![Logo nova](img/readme/logo_nova.jpg)
+
+<img src="img/logo/Tela_inicial.jpg" width="500">
+
+                Depois:
+
+
+<img src="img/logo/logo.png" width="500">
 
 ---
 
