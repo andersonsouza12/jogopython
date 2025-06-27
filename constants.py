@@ -40,3 +40,11 @@ TEXTO_INTRO = (
 )
 
 
+TEXTO_FINAL = (
+    "Depois de enfrentar inúmeros perigos,"
+    "ele finalmente encontrou a cura e salvou sua esposa."
+    "Obrigado por jogar!"
+)
+
+
+

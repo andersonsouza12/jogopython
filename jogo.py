@@ -12,7 +12,8 @@ from utils import (
     atualizar_texto_vida,
     verificar_colisao_personagem_zombie,
     verificar_colisoes_tela,
-    carregar_imagem_esposa
+    carregar_imagem_esposa,
+    mostrar_tela_final
 )
 
 from jogopython.zombie import (
@@ -101,7 +102,7 @@ clock = pygame.time.Clock()
 font = pygame.font.SysFont("arial black", 32)
 
 ##fundo_atual = "fundo1"
-fundo_atual = "fundo3"
+fundo_atual = "fundo1"
 contador = 0
 rodando = True
 vida_personagem = 4
@@ -143,11 +144,19 @@ while rodando:
         vida_personagem = verificar_colisao_personagem_zombie(x_personagem, y_personagem, constants.LARGURA_PERSONAGEM, constants.ALTURA_PERSONAGEM, zombies_fundo3, vida_personagem)
 
     if vida_personagem <= 0:
-        fundo = telas["gameover"]
+        janela.blit(telas["gameover"], (0,0))
+        pygame.display.update()
+
+        pygame.time.delay(4000) # esperar 4 segundos
         rodando = False
 
     if fundo_atual == "fundo4":
         janela.blit(image_esposa, (500,350))
+
+        # Verifica se chegou até a esposa
+        if 480 < x_personagem < 540 and 330 < y_personagem < 390:
+            mostrar_tela_final(janela, font, constants.TEXTO_FINAL, telas["fundoHitory"])
+            rodando = False
 
     if movendo:
         contador = desenhar_personagem(janela, imagens_personagem, x_personagem, y_personagem, direcao, contador)
